@@ -38,12 +38,14 @@ const express = require('express');
 const { createWorkspace, getUserWorkspaces } = require('../controllers/workspaceController');
 // const { authenticate } = require('../middleware/authMiddleware'); // Assuming you have auth middleware
 const { verifyToken } = require('../middleware/authMiddleware');
-
+const { getTeamLeads } = require('../controllers/userController');
 
 const router = express.Router();
 
 router.post('/workspaces', verifyToken, createWorkspace);
 router.get('/workspaces', verifyToken, getUserWorkspaces);
+
+router.get('/teamleads',getTeamLeads);
 
 
 module.exports = router;
